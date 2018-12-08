@@ -11,5 +11,7 @@ class Greeting extends React.Component {
         return <h1>Hello {this.props.name}!</h1>;
     }
 }
-
-ReactDOM.render(<Greeting name={`Daniel`}/>, document.getElementById('content'));
+Greeting.defaultProps = {
+    name: "user"
+};
+ReactDOM.render(<Greeting/>, document.getElementById('content'));
