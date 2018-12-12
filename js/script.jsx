@@ -29,7 +29,7 @@ class ProfileLink extends React.Component {
         </a>
     }
 }
-
+// ReactDOM.render(<ProfileLink url='google.com'/>, document.getElementById('links'));
 class WorldHello extends React.Component {
     render() {
         return <h1 {...this.properties}>
@@ -43,7 +43,7 @@ ReactDOM.render(
         <WorldHello
             id='ember'
             frameworkName='Ember.js'
-            title='A framework for creating ambitious web applications.'/>,
+            title='A framework for creating ambitious web applications.'/>
         <WorldHello
             id='backbone'
             frameworkName= 'Backbone.js'
@@ -54,4 +54,4 @@ ReactDOM.render(
             title= 'Superheroic JavaScript MVW Framework'/>
     </div>, document.getElementById('content')
 );
-// ReactDOM.render(<ProfileLink url='www.google.com' label='Google Home Page' />, document.getElementById('content'));
+ReactDOM.render(<ProfileLink url='www.google.com' label='Google Home Page' />, document.getElementById('link'));
