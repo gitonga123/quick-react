@@ -54,4 +54,25 @@ ReactDOM.render(
             title= 'Superheroic JavaScript MVW Framework'/>
     </div>, document.getElementById('content')
 );
-ReactDOM.render(<ProfileLink url='www.google.com' label='Google Home Page' />, document.getElementById('link'));
+// ReactDOM.render(<ProfileLink url='www.google.com' label='Google Home Page' />, document.getElementById('link'));
+
+class Content extends React.Component {
+    getUrl() {
+        return 'www.google.com'
+    }
+    getUrlName() {
+        return 'Google'
+    }
+    render() {
+        return (
+            <div>
+                <p>
+                    Your Rest API URL is:
+                     <a href={this.getUrl()}>{this.getUrlName()}</a>
+                </p>
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Content />, document.getElementById('content'));
