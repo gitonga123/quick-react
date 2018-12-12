@@ -20,4 +20,38 @@ class HelloWorld extends React.Component {
         )
     }
 }
-ReactDOM.render(<HelloWorld />, document.getElementById('content'))
+
+class ProfileLink extends React.Component {
+    render() {
+        return <a href={this.props.url}
+                  title={this.props.label}
+                  target="_-blank">
+        </a>
+    }
+}
+
+class WorldHello extends React.Component {
+    render() {
+        return <h1 {...this.properties}>
+            Hello {this.props.frameworkName} world!!
+        </h1>
+    }
+}
+
+ReactDOM.render(
+    <div>
+        <WorldHello
+            id='ember'
+            frameworkName='Ember.js'
+            title='A framework for creating ambitious web applications.'/>,
+        <WorldHello
+            id='backbone'
+            frameworkName= 'Backbone.js'
+            title= 'Backbone.js gives structure to web applications...'/>
+        <WorldHello
+            id= 'angular'
+            frameworkName= 'Angular.js'
+            title= 'Superheroic JavaScript MVW Framework'/>
+    </div>, document.getElementById('content')
+);
+// ReactDOM.render(<ProfileLink url='www.google.com' label='Google Home Page' />, document.getElementById('content'));
