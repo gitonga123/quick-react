@@ -1,10 +1,15 @@
-const rootElement = document.getElementById('root');
 // const element = React.createElement('div', {className: "container", children: "Hello World"});
-const greeting = "Hello There";
-const myClassName = "container";
-const props = {
-    className: 'container',
-    children: 'Hello World'
-}
-const element = <div {...props}/>
-ReactDOM.render(element,rootElement);
+const rootElement = document.getElementById('root');
+
+const Message = props => <div>{props.children}</div>
+
+const element = (
+    <div className="container">
+       <Message>
+            Hello World
+            <Message>Goodye World</Message>
+        </Message>
+    </div>
+)
+
+ReactDOM.render(element, rootElement);
