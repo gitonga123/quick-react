@@ -3,20 +3,21 @@ import Counter from "./counter.jsx";
 // single source of truth
 class Counters extends Component {
 	render() {
+		const {onReset, counters, onDelete, onIncrement} = this.props;
 		return (
 			<div>
 				<button
-					onClick={this.props.onReset}
+					onClick={onReset}
 					className="btn btn-sm btn-primary m-2"
 				>
 					Reset
 				</button>
-				{this.props.counters.map(counter => (
+				{counters.map(counter => (
 					<Counter
 						key={counter.key}
-						onDelete={this.props.onDelete}
+						onDelete={onDelete}
 						counter={counter}
-						onIncrement={this.props.onIncrement}
+						onIncrement={onIncrement}
 					/>
 				))}
 			</div>
