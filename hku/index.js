@@ -14,7 +14,7 @@ function solveRect(l, b) {
 }
 
 solveRect(5, 7)
-// solveRect(5, 10)
-// solveRect(15, 67)
-// solveRect(-15, 7)
-// solveRect(15, 0)
+solveRect(5, 10)
+solveRect(15, 67)
+solveRect(-15, 7)
+solveRect(15, 0)
