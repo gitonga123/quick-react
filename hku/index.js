@@ -1,20 +1,17 @@
-const rect = require('./rectangle')
+const http = require('http')
+const hostname = 'localhost'
+const port = 3000
 
-function solveRect(l, b) {
-  // console.log('Solving the reactangle with l = ' + l);
-  rect(l, b, (err, rectangle) => {
-    if (err) {
-      console.log('ERROR: ', err.message)
-    } else {
-      console.log(`Area of Rectangle ${l} by ${b} = ${rectangle.area()}`)
-      console.log(`Perimeter of Rectangle ${l} by ${b} = ${rectangle.perimeter()}`)
-    }
-  })
-  console.log("This statement is after the rect");
-}
+const server = http.createServer((req, res) => {
+  console.log(req.headers)
+  console.log(req.body)
 
-solveRect(5, 7)
-solveRect(5, 10)
-solveRect(15, 67)
-solveRect(-15, 7)
-solveRect(15, 0)
+  res.statusCode = 200
+  res.setHeader('Content-Type', 'text/html')
+  // res.write('Hello World')
+  res.end(`<html><body>Hello World</body></html>`)
+})
+
+server.listen(port, hostname, () => {
+  console.log(`Listening port ${port} at host http://${hostname}`)
+})
