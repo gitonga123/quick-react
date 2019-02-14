@@ -5,8 +5,8 @@ client.on('error', function(error) {
 	console.log("Something went wrong");
 });
 
-client.set('My Test Key', 'my test value', redis.print);
-client.get('My test Key', function(error, result) {
+client.set('my test key', 'my test value', redis.print);
+client.get('my test key', function(error, result) {
 	if (error) throw error;
-	console.log('Get Result --->', result);
+	console.log('Get Result --->')
 });
