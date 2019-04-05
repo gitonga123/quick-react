@@ -1,15 +1,13 @@
 import React from 'react';
 
-import OutputScreenRow from './outputScreenRow.js';
+// function component used to show question/answer
 
-const OutputScreen = (props) => {
-	console.log(props);
-	return (
-		<div className="screen">
-		    <OutputScreenRow value={props.question}></OutputScreenRow>
-		    <OutputScreenRow value={props.answer}></OutputScreenRow>
-		</div>
-	)
+const OutputScreenRow = () => {
+  return ( 
+    <div className = "screen-row">
+    <input type = "text" readOnly />
+    </div>
+  )
 }
 
-export default OutputScreen;
+export default OutputScreenRow;
