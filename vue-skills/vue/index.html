@@ -11,72 +11,54 @@
 <body>
   <h1>Hello!</h1>
   <div id="app">
-    <awesome-button></awesome-button>
-    <hr>
-    <game-card :game-data="game" :key="game.name" v-for="game in games"></game-card>
-
+    <age-calculator :key="person.name" :person="person" v-for="person in people"></age-calculator>
   </div>
 
   <script src="./assets/js/vue-downloads.js"></script>
   <script>
-    Vue.component('awesome-button', {
-      template: `<button @click="clickHandler">Click me for some awesomeness</button>`,
-      methods: {
-        clickHandler() {
-          alert('YAAAS 😎');
-        }
-      }
-    });
-    Vue.component('game-card', {
-      props: ['gameData'],
-      template: `
-            <div style="border-radius: .25rem; border: 1px solid #ECECEC;">
-              <h2>{{ game.name }} - <small>{{ game.console }}</small></h2>
-
-              <span v-for="heart in game.rating">❤️</span>
-
-              <button @click="increaseRating">Increase Rating</button>
-            </div>
-          `,
-      methods: {
-        increaseRating() {
-          this.game.rating ++
+    Vue.component("age-calculator", {
+      props: {
+        person: {
+          type: Object,
+          required: true
         }
       },
+      template: `<div>
+          <p>{{ person.name }} has been kicking butt for 
+             {{ daysAlive }} days
+          </p>
+        </div>`,
       data() {
-        return {
-          game: {
-            ...this.gameData
-          }
+        return {days: 56}
+      },
+      computed: {
+        daysAlive() {
+          return this.person.age * 365
         }
       }
     });
-  </script>
-  <script>
     const app = new Vue({
       el: '#app',
       data: {
-        games: [
+        people: [
           {
-            name: 'Super Mario 64',
-            console: 'Nintendo 64',
-            rating: 4
+            name: 'Mario',
+            age: 38
           }, {
-            name: 'The Legend of Zelda Ocarina of Time',
-            console: 'Nintendo 64',
-            rating: 5
+            name: 'Luigi',
+            age: 38
           }, {
-            name: 'Secret of Mana',
-            console: 'Super Nintendo',
-            rating: 4
+            name: 'Samus',
+            age: 31
           }, {
-            name: 'Fallout 76',
-            console: 'Multiple',
-            rating: 1
+            name: 'Link',
+            age: 20
           }, {
-            name: 'Super Metroid',
-            console: 'Super Nintendo',
-            rating: 6
+            name: 'Marina',
+            age: 32
+          }, {
+            name: "Daniel",
+            age: 56
           }
         ]
       }
