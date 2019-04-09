@@ -3,72 +3,82 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
   <title>Vue Js</title>
 </head>
 
 <body>
   <h1>Hello!</h1>
   <div id="app">
-    <p>My Local Property: {{ myLocalProperty }}</p>
-    <hr />
-    <button @click="buttonClicked">{{ randomNumber }}</button>
+    <awesome-button></awesome-button>
     <hr>
-    <p v-if="randomNumber >= 50">Random Number is >= 50!</p>
-    <p v-else>Sorry, Random Number is only <b>{{ randomNumber }}</b></p>
-    <hr>
-    <p>Game title here</p>
-    <div v-for="game in games" :key="game.name">
-      <h1>{{ game.name }} - <small>{{ game.console }}</small></h1>
-      <span v-for="sar in game.rating" @click="increaseRating(game)">❤️</span>
-      <div v-if="game.rating > 5">
-        Wow, this game must be <b>REALLY</b> Good
-      </div>
-    </div>
+    <game-card :game-data="game" :key="game.name" v-for="game in games"></game-card>
+
   </div>
 
   <script src="./assets/js/vue-downloads.js"></script>
   <script>
+    Vue.component('awesome-button', {
+      template: `<button @click="clickHandler">Click me for some awesomeness</button>`,
+      methods: {
+        clickHandler() {
+          alert('YAAAS 😎');
+        }
+      }
+    });
+    Vue.component('game-card', {
+      props: ['gameData'],
+      template: `
+            <div style="border-radius: .25rem; border: 1px solid #ECECEC;">
+              <h2>{{ game.name }} - <small>{{ game.console }}</small></h2>
+
+              <span v-for="heart in game.rating">❤️</span>
+
+              <button @click="increaseRating">Increase Rating</button>
+            </div>
+          `,
+      methods: {
+        increaseRating() {
+          this.game.rating ++
+        }
+      },
+      data() {
+        return {
+          game: {
+            ...this.gameData
+          }
+        }
+      }
+    });
+  </script>
+  <script>
     const app = new Vue({
-      el: "#app",
+      el: '#app',
       data: {
-        myLocalProperty: 'Checking..',
-        randomNumber: 0,
-        games: [{
+        games: [
+          {
             name: 'Super Mario 64',
             console: 'Nintendo 64',
             rating: 4
-          },
-          {
+          }, {
             name: 'The Legend of Zelda Ocarina of Time',
             console: 'Nintendo 64',
             rating: 5
-          },
-          {
+          }, {
             name: 'Secret of Mana',
             console: 'Super Nintendo',
             rating: 4
-          },
-          {
+          }, {
             name: 'Fallout 76',
             console: 'Multiple',
             rating: 1
-          },
-          {
+          }, {
             name: 'Super Metroid',
             console: 'Super Nintendo',
             rating: 6
           }
         ]
-      },
-      methods: {
-        buttonClicked() {
-          this.randomNumber = Math.floor(Math.random() * 100);
-        },
-        increaseRating(game) {
-          game.rating++
-        }
       }
     });
   </script>
