@@ -11,56 +11,44 @@
 <body>
   <h1>Hello!</h1>
   <div id="app">
-    <age-calculator :key="person.name" :person="person" v-for="person in people"></age-calculator>
+    <label>What's your favorite game ever ?</label>
+    <input type="text" v-model="favoriteGame">
+    <hr>
+    <p>{{ response }}</p>
   </div>
 
   <script src="./assets/js/vue-downloads.js"></script>
   <script>
-    Vue.component("age-calculator", {
-      props: {
-        person: {
-          type: Object,
-          required: true
-        }
-      },
-      template: `<div>
-          <p>{{ person.name }} has been kicking butt for 
-             {{ daysAlive }} days
-          </p>
-        </div>`,
-      data() {
-        return {days: 56}
-      },
-      computed: {
-        daysAlive() {
-          return this.person.age * 365
-        }
-      }
-    });
+
     const app = new Vue({
       el: '#app',
-      data: {
-        people: [
-          {
-            name: 'Mario',
-            age: 38
-          }, {
-            name: 'Luigi',
-            age: 38
-          }, {
-            name: 'Samus',
-            age: 31
-          }, {
-            name: 'Link',
-            age: 20
-          }, {
-            name: 'Marina',
-            age: 32
-          }, {
-            name: "Daniel",
-            age: 56
+      data() {
+        return {favoriteGame: null, response: ''}
+      },
+      watch: {
+        favoriteGame(newValue, oldValue) {
+          if (!newValue) 
+            return
+          
+          if (newValue.toLowerCase().indexOf('metroid') !== -1) {
+            this.response = 'Ceres station is under attack!'
+            return
           }
-        ]
+          // If the new value contains the word zelda
+          if (newValue.toLowerCase().indexOf('zelda') !== -1) {
+            this.response = 'Its dangerous to go alone, take this 🗡️'
+            return
+          }
+
+          // If the OLD value was metroid, and user changed it something else
+          if (oldValue.toLowerCase().indexOf('metroid') !== -1 && newValue.toLowerCase().indexOf('metroid') === -1) {
+            this.response = 'GET TO DA CHOPPA NAO'
+            return
+          }
+
+          // Default response
+          this.response = 'Sure, why not?'
+        }
       }
     });
   </script>
