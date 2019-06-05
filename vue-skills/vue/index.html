@@ -22,13 +22,27 @@
 		<ul>
 			<li v-for="cat in cats">{{ cat.name | personalize | capitalize }}</li>
 		</ul>
+		<catlist :cats="cats" />
 	</div>
+
 
 	<script type="text/javascript" src="../vue/assets/js/vue-downloads.js"></script>
 
 	<script>
+		Vue.component('catlist', {
+			props: ['cats'],
+			template: `<div>
+					<ul>
+						<li v-for="cat in cats">{{ cat.name }}</li>
+					</ul>
+				</div>`
+		})
+
 		const root = new Vue({
 			el: "#root",
+			component: [
+				'catlist'
+			],
 			data: {
 				cats: [{
 						name: 'Ann'
