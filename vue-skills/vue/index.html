@@ -1,57 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="ie=edge" http-equiv="X-UA-Compatible">
-  <title>Vue Js</title>
+	<title>Learn Vue Js</title>
+	<style>
+		.red {
+			border: 2px solid red;
+		}
+		.green {
+			border: 2px solid green;
+		}
+	</style>
 </head>
-
 <body>
-  <h1>Hello!</h1>
-  <div id="app">
-    <label>What's your favorite game ever ?</label>
-    <input type="text" v-model="favoriteGame">
-    <hr>
-    <p>{{ response }}</p>
-  </div>
+	<div id="root">
+		<input type="text" name="newCat" v-model="newCat" @keyup.enter="addKittens">
+		<button @click="addKittens">+ ADD </button>
+		<ul>
+			<li v-for="cat in cats">{{ cat.name }}</li>
+		</ul>
+	</div>
 
-  <script src="./assets/js/vue-downloads.js"></script>
-  <script>
+	<script type="text/javascript" src="../vue/assets/js/vue-downloads.js"></script>
 
-    const app = new Vue({
-      el: '#app',
-      data() {
-        return {favoriteGame: null, response: ''}
-      },
-      watch: {
-        favoriteGame(newValue, oldValue) {
-          if (!newValue) 
-            return
-          
-          if (newValue.toLowerCase().indexOf('metroid') !== -1) {
-            this.response = 'Ceres station is under attack!'
-            return
-          }
-          // If the new value contains the word zelda
-          if (newValue.toLowerCase().indexOf('zelda') !== -1) {
-            this.response = 'Its dangerous to go alone, take this 🗡️'
-            return
-          }
+	<script>
+		const root = new Vue({
+			el: "#root",
+			data: {
+				cats: [
+					{name: 'Ann'},
+					{name: 'Karimi'},
+					{name: 'Laura'},
+					{name: 'henry'},
+					{name: 'Daniel'},
+					{name: 'Stephanie'}
+				],
+				newCat: ''
+			},
+			methods: {
+				addKittens: function() {
+					this.cats.push({name: this.newCat})
+					this.newCat = "";
 
-          // If the OLD value was metroid, and user changed it something else
-          if (oldValue.toLowerCase().indexOf('metroid') !== -1 && newValue.toLowerCase().indexOf('metroid') === -1) {
-            this.response = 'GET TO DA CHOPPA NAO'
-            return
-          }
-
-          // Default response
-          this.response = 'Sure, why not?'
-        }
-      }
-    });
-  </script>
+				}
+			}
+		})
+	</script>
 </body>
-
 </html>
