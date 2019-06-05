@@ -16,10 +16,11 @@
 
 <body>
 	<div id="root">
+		{{ kittifyName }}
 		<input type="text" name="newCat" v-model="newCat" @keyup.enter="addKittens">
 		<button @click="addKittens">+ ADD </button>
 		<ul>
-			<li v-for="cat in cats">{{ cat.name | capitalize | personalize }}</li>
+			<li v-for="cat in cats">{{ cat.name | personalize | capitalize }}</li>
 		</ul>
 	</div>
 
@@ -58,12 +59,19 @@
 					this.newCat = "";
 				}
 			},
+			computed: {
+				kittifyName: function () {
+					if (this.newCat.length > 1) {
+						return this.newCat + "y"
+					}
+				}
+			},
 
 			filters: {
 				capitalize: function (value) {
 					return value.toUpperCase()
-				}, 
-				personalize : function(value) {
+				},
+				personalize: function (value) {
 					return value + "Y";
 				}
 			}
