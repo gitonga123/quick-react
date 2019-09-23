@@ -16,20 +16,27 @@
 
 <body>
 	<div id="root">
-		{{ kittifyName }}
 		<input type="text" name="newCat" v-model="newCat" @keyup.enter="addKittens">
 		<button @click="addKittens">+ ADD </button>
 		<ul>
 			<li v-for="cat in cats">{{ cat.name | personalize | capitalize }}</li>
 		</ul>
-		<catlist :cats="cats" />
+		<cat-list :cats="cats" />
 	</div>
 
 
 	<script type="text/javascript" src="../vue/assets/js/vue-downloads.js"></script>
 
 	<script>
-		Vue.component('catlist', {
+		Vue.component('cat-list', {
+			props: ['cats'],
+			template: `<div>
+					<ul>
+						<li v-for="cat in cats">{{ cat.name }}</li>
+					</ul>
+				</div>`
+		})
+		Vue.component('mylist', {
 			props: ['cats'],
 			template: `<div>
 					<ul>
@@ -41,7 +48,7 @@
 		const root = new Vue({
 			el: "#root",
 			component: [
-				'catlist'
+				'cat-list', 'my-list'
 			],
 			data: {
 				cats: [{
@@ -88,7 +95,19 @@
 				personalize: function (value) {
 					return value + "Y";
 				}
-			}
+			},
+			created() {
+				console.log("created");
+			},
+			mounted() {
+				console.log("Mounted");
+			},
+			updated() {
+				console.log("Updated")
+			},
+			destroyed() {
+				console.log("Destroyed");
+			},
 		})
 	</script>
 </body>

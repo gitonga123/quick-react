@@ -1,45 +1,29 @@
 <template>
   <div id="app">
-    <Skills/>
+    <Header />
+    <b-container class="bv-example-row">
+      <b-row>
+        <b-col sm="6" offset="n3">
+          <QuestionBox />
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
-import Skills from "./components/Skills.vue";
+import Header from "./components/Header.vue";
+import QuestionBox from "./components/QuestionBox.vue";
 
 export default {
   name: "app",
   components: {
-    Skills
+    Header,
+    QuestionBox
   }
 };
 </script>
 
 <style>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
-
-body {
-  background-color: #eeeeee;
-  font-family: "Montserrat", sans-serif;
-  display: grid;
-  grid-template-rows: auto;
-  justify-items: center;
-  align-items: center;
-}
-body,
-html {
-  margin: 0;
-  height: 100%;
-}
-#app {
-  width: 50%;
-}
-input {
-  width: calc(100% - 40px);
-  border: 0;
-  padding: 20px;
-  font-size: 1.3em;
-  background-color: #323333;
-  color: #687f7f;
-}
-</style>
+</style> **/
