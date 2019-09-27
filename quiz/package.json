@@ -1,5 +1,5 @@
 {
-  "name": "vue-skills",
+  "name": "quiz",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -10,18 +10,18 @@
   "dependencies": {
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.2",
+    "core-js": "^2.6.5",
     "jquery": "^3.4.1",
-    "vue": "^2.6.6",
-    "lodash": "^4.17.13"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.5.21"
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,
@@ -32,9 +32,7 @@
       "plugin:vue/essential",
       "eslint:recommended"
     ],
-    "rules": {
-      "no-console": 0
-    },
+    "rules": {},
     "parserOptions": {
       "parser": "babel-eslint"
     }
@@ -46,7 +44,6 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+    "last 2 versions"
   ]
 }
