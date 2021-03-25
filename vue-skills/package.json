@@ -12,7 +12,7 @@
     "bootstrap-vue": "^2.0.2",
     "jquery": "^3.4.1",
     "vue": "^2.6.6",
-    "lodash": "^4.17.13"
+    "lodash": "^4.17.19"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
